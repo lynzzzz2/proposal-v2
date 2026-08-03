@@ -48,16 +48,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function playRevealAnimations(page) {
 
-        const revealEls = page.querySelectorAll(".reveal");
+        page.querySelectorAll(".reveal").forEach(container => {
 
-        revealEls.forEach((el, i) => {
+            container.classList.remove("active");
 
-            setTimeout(() => {
-                el.classList.add("active");
-            }, 200 + i * 150);
+            const children = container.children;
 
-        });
-
+            Array.from(children).forEach((child, index) => {
+                child.style.transitionDelay = (index * 0.45) + "s";
+            });
+            requestAnimationFrame(() => {
+               container.classList.add("active");
+            });
+        })
     }
 
     /* ==========================================================
