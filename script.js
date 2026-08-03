@@ -12,6 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const musicBtn = document.getElementById("musicBtn");
     const music = document.getElementById("bgMusic");
     const progress = document.querySelector(".progress");
+    const typedQuestion = document.getElementById("typedQuestion");
+    const proposalButtons = document.querySelector(".proposal-buttons");
 
     let isPlaying = false;
 
@@ -53,15 +55,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
             container.classList.remove("active");
 
-            const children = container.children;
+            Array.from(container.children).forEach((child,index)=>{
+                child.style.transitionDelay=(index*0.45)+"s";
+            });
 
-            Array.from(children).forEach((child, index) => {
-                child.style.transitionDelay = (index * 0.45) + "s";
+            requestAnimationFrame(()=>{
+                container.classList.add("active");
             });
-            requestAnimationFrame(() => {
-               container.classList.add("active");
-            });
-        })
+
+        });
+
+        /* Proposal Page Special Animation */
+        if(page.id==="proposal"){
+            if(typedQuestion){
+                typedQuestion.textContent="";
+            }
+            if(proposalButtons){
+                proposalButtons.classList.remove("show");
+            }
+            const text="Can I be your boyfriend?";
+            let i=0;
+            setTimeout(()=>{
+                const typing=setInterval(()=>{
+                    typedQuestion.textContent+=text.charAt(i);
+                    i++;
+                    if(i>=text.length){
+                        clearInterval(typing);
+                        proposalButtons.classList.add("show");
+                    }
+                },80);
+            },3000);
+        }
     }
 
     /* ==========================================================
