@@ -1,0 +1,581 @@
+/* ==========================================================
+   RESET
+========================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #FFF9FA;
+    color: #2F2F2F;
+    overflow: hidden;
+    height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* ==========================================================
+   LAYOUT — PAGE BY PAGE (each .scene is a full-screen "page")
+========================================================== */
+
+.scene {
+    position: fixed;
+    inset: 0;
+
+    min-height: 100svh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 28px;
+
+    overflow-y: auto;
+
+    z-index: 2;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 1s ease;
+}
+
+.scene.active-page {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    z-index: 3;
+}
+
+.content,
+.proposalBox,
+.letter {
+    width: 100%;
+    max-width: 360px;
+    text-align: center;
+}
+
+.chapter {
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* ==========================================================
+   TYPOGRAPHY
+========================================================== */
+
+small {
+    display: block;
+    color: #E89AB3;
+    font-size: 13px;
+    letter-spacing: 4px;
+    margin-bottom: 18px;
+}
+
+h1 {
+    font-family: 'Parisienne', cursive;
+    font-size: 52px;
+    line-height: 1.15;
+    margin-bottom: 25px;
+}
+
+h2 {
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.3;
+    text-align: center;
+    color: #2F2F2F;
+    margin-bottom: 10px;
+}
+
+p {
+    color: #666;
+    font-size: 17px;
+    line-height: 1.95;
+    letter-spacing: .2px;
+}
+
+.story,
+.letter-body p,
+.note p {
+    max-width: 100%;
+}
+
+/* ==========================================================
+   BUTTONS
+========================================================== */
+
+button {
+
+    margin-top: 45px;
+
+    border: none;
+
+    border-radius: 999px;
+
+    background: #E89AB3;
+
+    color: white;
+
+    padding: 16px 36px;
+
+    font-size: 16px;
+
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        opacity .25s ease,
+        background .25s ease;
+
+    box-shadow: 0 10px 25px rgba(232,154,179,.25);
+
+    -webkit-tap-highlight-color: transparent;
+
+}
+
+button:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 16px 35px rgba(232,154,179,.35);
+
+}
+
+button:active {
+
+    transform: scale(.96);
+
+}
+
+#yesBtn {
+    width: 190px;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 18px;
+}
+
+/* ==========================================================
+   CONTINUE / BACK NAVIGATION BUTTONS
+========================================================== */
+
+.nav-buttons {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+
+    margin-top: 45px;
+
+}
+
+.nav-buttons button {
+    margin-top: 0;
+}
+
+.backBtn {
+
+    background: transparent;
+    color: #E89AB3;
+    border: 2px solid #E89AB3;
+    box-shadow: none;
+
+}
+
+.backBtn:hover {
+
+    background: rgba(232,154,179,.08);
+    box-shadow: none;
+
+}
+
+/* ==========================================================
+   MUSIC BUTTON
+========================================================== */
+
+.music-btn {
+
+    position: fixed;
+
+    top: 20px;
+    right: 20px;
+
+    width: 46px;
+    height: 46px;
+
+    border-radius: 50%;
+
+    padding: 0;
+    margin: 0;
+
+    font-size: 18px;
+
+    background: rgba(255,255,255,.85);
+
+    color: #E89AB3;
+
+    backdrop-filter: blur(10px);
+
+    box-shadow: 0 8px 20px rgba(0,0,0,.06);
+
+    z-index: 1000;
+
+}
+
+/* ==========================================================
+   PROGRESS DOTS
+========================================================== */
+
+.progress {
+
+    position: fixed;
+
+    top: 24px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+
+    gap: 8px;
+
+    z-index: 1000;
+
+}
+
+.progress span {
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #F3D7E1;
+
+    transition: background .3s ease;
+
+}
+
+.progress .active {
+
+    background: #E89AB3;
+
+}
+
+/* ==========================================================
+   IMAGES
+========================================================== */
+
+img {
+
+    user-select: none;
+    -webkit-user-drag: none;
+
+}
+
+.photo {
+
+    width: 100%;
+
+    display: block;
+
+    margin: 28px 0;
+
+    border-radius: 20px;
+
+    object-fit: cover;
+
+    aspect-ratio: 16/9;
+
+    box-shadow: 0 8px 20px rgba(0,0,0,.06);
+
+    opacity: 0;
+
+    transform: translateY(20px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+
+}
+
+.photo:hover {
+
+    transform: scale(1.02);
+
+}
+
+.reveal.active .photo {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+}
+
+/* ==========================================================
+   REVEAL ANIMATION (fades in like a page being read)
+========================================================== */
+
+.reveal {
+
+    opacity: 0;
+
+    transform: translateY(35px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+
+}
+
+.reveal.active {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+}
+
+/* ==========================================================
+   STORY
+========================================================== */
+
+.date {
+
+    font-size: 14px;
+
+    color: #B4B4B4;
+
+}
+
+.story {
+
+    text-align: left;
+
+    color: #555;
+
+    line-height: 2;
+
+}
+
+/* ==========================================================
+   GRATITUDE
+========================================================== */
+
+.memory {
+
+    margin-top: 45px;
+
+}
+
+.memory:first-child {
+
+    margin-top: 20px;
+
+}
+
+.memory .photo {
+
+    margin-bottom: 18px;
+
+}
+
+.memory .story {
+
+    margin-bottom: 20px;
+
+}
+
+/* ==========================================================
+   APPRECIATION
+========================================================== */
+
+.note {
+
+    text-align: left;
+
+    background: white;
+
+    padding: 22px;
+
+    border-radius: 20px;
+
+    margin-top: 20px;
+
+    box-shadow: 0 8px 20px rgba(0,0,0,.05);
+
+}
+
+.note span {
+
+    display: block;
+
+    color: #E89AB3;
+
+    font-size: 20px;
+
+    margin-bottom: 10px;
+
+}
+
+.note p {
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    color: #555;
+
+}
+
+/* ==========================================================
+   LETTER
+========================================================== */
+
+.letter h2 {
+
+    margin-bottom: 35px;
+
+}
+
+.letter-body {
+
+    text-align: left;
+
+}
+
+.greeting {
+
+    color: #2F2F2F;
+
+    margin-bottom: 20px;
+
+}
+
+.letter-body p {
+
+    margin-bottom: 22px;
+
+}
+
+.signature {
+
+    margin-top: 45px;
+
+    text-align: right;
+
+    font-weight: 500;
+
+    color: #2F2F2F;
+
+}
+
+/* ==========================================================
+   LAST MESSAGE
+========================================================== */
+
+.last-message {
+
+    margin-top: 40px;
+
+    text-align: center;
+
+    font-size: 22px;
+
+    line-height: 2;
+
+    color: #555;
+
+}
+
+/* ==========================================================
+   PROPOSAL
+========================================================== */
+
+.proposal-text {
+
+    font-size: 28px;
+
+    line-height: 1.6;
+
+    color: #2F2F2F;
+
+    margin: 35px 0;
+
+}
+
+/* ==========================================================
+   FLOATING LILIES
+========================================================== */
+
+.petals{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    overflow:hidden;
+
+    z-index:1;
+
+}
+
+.petal{
+
+    position:absolute;
+
+    top:-60px;
+
+    font-size:24px;
+
+    opacity:.55;
+
+    animation:fall linear forwards;
+
+}
+
+@keyframes fall{
+
+    from{
+
+        transform:
+            translateY(-60px)
+            rotate(0deg);
+
+    }
+
+    to{
+
+        transform:
+            translateY(110vh)
+            rotate(360deg);
+
+    }
+
+}
+
+button{
+    pointer-events:auto !important;
+    position:relative;
+    z-index:9999 !important;
+}
