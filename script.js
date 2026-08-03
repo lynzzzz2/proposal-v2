@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
        ELEMENTS
     ========================================================== */
 
+    const pageBackBtn = document.getElementById("pageBackBtn");
     const musicBtn = document.getElementById("musicBtn");
     const music = document.getElementById("bgMusic");
     const progress = document.querySelector(".progress");
@@ -82,6 +83,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
         currentPage = index;
 
+        if(index === 0){
+
+            pageBackBtn.style.display = "none";
+
+        }else{
+
+            pageBackBtn.style.display = "block";
+
+        }
+
         playRevealAnimations(pages[index]);
 
     }
@@ -93,6 +104,8 @@ document.addEventListener("DOMContentLoaded", () => {
     function prevPage() {
         showPage(currentPage - 1);
     }
+
+    pageBackBtn.addEventListener("click", prevPage);
 
     // Show the cover page on load
     showPage(0);
@@ -210,6 +223,18 @@ document.addEventListener("DOMContentLoaded", () => {
             setTimeout(() => {
                 nextPage();
             }, 900);
+
+        });
+
+    }
+
+    const noBtn = document.getElementById("noBtn");
+
+    if(noBtn){
+
+        noBtn.addEventListener("click", () => {
+
+            showPage(currentPage - 1);
 
         });
 
