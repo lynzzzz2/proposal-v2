@@ -244,6 +244,41 @@ button:active {
 }
 
 /* ==========================================================
+   TOP LEFT BACK BUTTON
+========================================================== */
+
+.page-back{
+
+    position:fixed;
+
+    top:20px;
+    left:20px;
+
+    width:46px;
+    height:46px;
+
+    border-radius:50%;
+
+    margin:0;
+    padding:0;
+
+    font-size:24px;
+
+    background:rgba(255,255,255,.85);
+
+    color:#E89AB3;
+
+    backdrop-filter:blur(10px);
+
+    box-shadow:0 8px 20px rgba(0,0,0,.06);
+
+    z-index:1000;
+
+    display:none;
+
+}
+
+/* ==========================================================
    PROGRESS DOTS
 ========================================================== */
 
@@ -636,19 +671,6 @@ button{
 
 }
 
-/* Yes Button */
-
-#proposal #yesBtn {
-
-    opacity: 0;
-
-    transform: translateY(35px);
-
-    transition:
-        opacity 2.5s ease 4.5s,
-        transform 2.5s ease 4.5s;
-
-}
 
 /* Animate them */
 
@@ -659,5 +681,17 @@ button{
     opacity: 1;
 
     transform: translateY(0);
+
+}
+
+.proposal-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:18px;
+
+    margin-top:45px;
 
 }
