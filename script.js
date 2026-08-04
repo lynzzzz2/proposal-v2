@@ -1,7 +1,3 @@
-/* ==========================================================
-   WAIT FOR PAGE TO LOAD
-========================================================== */
-
 document.addEventListener("DOMContentLoaded", () => {
 
     /* ==========================================================
@@ -26,11 +22,9 @@ document.addEventListener("DOMContentLoaded", () => {
     ========================================================== */
 
     if (progress) {
-
         progress.innerHTML = "";
 
         pages.forEach((page, i) => {
-
             const dot = document.createElement("span");
 
             if (i === 0) {
@@ -38,9 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             progress.appendChild(dot);
-
         });
-
     }
 
     const dots = progress ? progress.querySelectorAll("span") : [];
@@ -50,41 +42,42 @@ document.addEventListener("DOMContentLoaded", () => {
     ========================================================== */
 
     function playRevealAnimations(page) {
-
         page.querySelectorAll(".reveal").forEach(container => {
-
             container.classList.remove("active");
 
-            Array.from(container.children).forEach((child,index)=>{
-                child.style.transitionDelay=(index*0.45)+"s";
+            Array.from(container.children).forEach((child, index) => {
+                child.style.transitionDelay = (index * 0.45) + "s";
             });
 
-            requestAnimationFrame(()=>{
+            requestAnimationFrame(() => {
                 container.classList.add("active");
             });
-
         });
 
-        /* Proposal Page Special Animation */
-        if(page.id==="proposal"){
-            if(typedQuestion){
-                typedQuestion.textContent="";
+        // Proposal page special animation (typed question + buttons)
+        if (page.id === "proposal") {
+            if (typedQuestion) {
+                typedQuestion.textContent = "";
             }
-            if(proposalButtons){
+
+            if (proposalButtons) {
                 proposalButtons.classList.remove("show");
             }
-            const text="Can I be your boyfriend?";
-            let i=0;
-            setTimeout(()=>{
-                const typing=setInterval(()=>{
-                    typedQuestion.textContent+=text.charAt(i);
+
+            const text = "Can I be your boyfriend?";
+            let i = 0;
+
+            setTimeout(() => {
+                const typing = setInterval(() => {
+                    typedQuestion.textContent += text.charAt(i);
                     i++;
-                    if(i>=text.length){
+
+                    if (i >= text.length) {
                         clearInterval(typing);
                         proposalButtons.classList.add("show");
                     }
-                },80);
-            },3000);
+                }, 80);
+            }, 3000);
         }
     }
 
@@ -93,7 +86,6 @@ document.addEventListener("DOMContentLoaded", () => {
     ========================================================== */
 
     function showPage(index) {
-
         if (index < 0 || index >= pages.length) return;
 
         pages[currentPage].classList.remove("active-page");
@@ -107,18 +99,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         currentPage = index;
 
-        if(index === 0){
-
+        if (index === 0) {
             pageBackBtn.style.display = "none";
-
-        }else{
-
+        } else {
             pageBackBtn.style.display = "block";
-
         }
 
         playRevealAnimations(pages[index]);
-
     }
 
     function nextPage() {
@@ -153,9 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const beginBtn = document.getElementById("beginBtn");
 
     if (beginBtn) {
-
         beginBtn.addEventListener("click", () => {
-
             music.play()
                 .then(() => {
                     isPlaying = true;
@@ -166,9 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
 
             nextPage();
-
         });
-
     }
 
     /* ==========================================================
@@ -176,17 +159,12 @@ document.addEventListener("DOMContentLoaded", () => {
     ========================================================== */
 
     if (musicBtn) {
-
         musicBtn.addEventListener("click", () => {
-
             if (isPlaying) {
-
                 music.pause();
                 musicBtn.textContent = "🔇";
                 isPlaying = false;
-
             } else {
-
                 music.play()
                     .then(() => {
                         musicBtn.textContent = "🎵";
@@ -195,11 +173,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     .catch((err) => {
                         console.log("Music couldn't play.", err);
                     });
-
             }
-
         });
-
     }
 
     /* ==========================================================
@@ -209,9 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const petals = document.querySelector(".petals");
 
     if (petals) {
-
         function createPetal() {
-
             const petal = document.createElement("div");
 
             petal.className = "petal";
@@ -223,12 +196,10 @@ document.addEventListener("DOMContentLoaded", () => {
             petals.appendChild(petal);
 
             setTimeout(() => petal.remove(), 14000);
-
         }
 
         createPetal();
         setInterval(createPetal, 1200);
-
     }
 
     /* ==========================================================
@@ -238,30 +209,26 @@ document.addEventListener("DOMContentLoaded", () => {
     const yesBtn = document.getElementById("yesBtn");
 
     if (yesBtn) {
-
         yesBtn.addEventListener("click", () => {
-
             yesBtn.textContent = "❤️";
             navigator.vibrate?.(200);
 
             setTimeout(() => {
                 nextPage();
             }, 900);
-
         });
-
     }
+
+    /* ==========================================================
+       NO BUTTON — goes back a page
+    ========================================================== */
 
     const noBtn = document.getElementById("noBtn");
 
-    if(noBtn){
-
+    if (noBtn) {
         noBtn.addEventListener("click", () => {
-
             showPage(currentPage - 1);
-
         });
-
     }
 
 });
