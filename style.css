@@ -14,10 +14,10 @@ html {
 
 body {
     font-family: 'Poppins', sans-serif;
-        background-image: url("images/background.jpg");
-       background-size: contain;
-       background-position: center top;
-       background-repeat: no-repeat;
+    background-image: url("images/background.jpg");
+    background-size: contain;
+    background-position: center top;
+    background-repeat: no-repeat;
     overflow: hidden;
     height: 100vh;
     -webkit-font-smoothing: antialiased;
@@ -29,27 +29,18 @@ body {
 ========================================================== */
 
 .scene {
-
     position: fixed;
     inset: 0;
-
     display: flex;
     justify-content: center;
-
     align-items: flex-start;
-
     overflow-y: auto;
-
     padding: 120px 28px 70px;
-
     z-index: 2;
-
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-
     transition: opacity 1s ease;
-
 }
 
 .scene.active-page {
@@ -67,11 +58,20 @@ body {
     text-align: center;
 }
 
+.proposalBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+}
+
 .chapter {
     width: 100%;
     max-width: 340px;
     margin: 0 auto;
-
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -123,56 +123,48 @@ p {
 ========================================================== */
 
 button {
-
     margin-top: 45px;
-
     border: none;
-
     border-radius: 999px;
-
     background: #E89AB3;
-
     color: white;
-
     padding: 16px 36px;
-
     font-size: 16px;
-
     font-weight: 500;
-
     cursor: pointer;
-
     transition:
         transform .25s ease,
         box-shadow .25s ease,
         opacity .25s ease,
         background .25s ease;
-
     box-shadow: 0 10px 25px rgba(232,154,179,.25);
-
     -webkit-tap-highlight-color: transparent;
-
 }
 
 button:hover {
-
     transform: translateY(-3px);
-
     box-shadow: 0 16px 35px rgba(232,154,179,.35);
-
 }
 
 button:active {
-
     transform: scale(.96);
-
 }
 
 #yesBtn {
-    width: 190px;
-    font-size: 18px;
+    width: 170px;
+    height: 62px;
+    font-size: 22px;
     font-weight: 600;
+    margin-top: 0;
     padding: 18px;
+}
+
+#noBtn {
+    width: 170px;
+    height: 62px;
+    margin-top: 0;
+    font-size: 22px;
+    font-weight: 600;
 }
 
 /* ==========================================================
@@ -180,14 +172,11 @@ button:active {
 ========================================================== */
 
 .nav-buttons {
-
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 14px;
-
     margin-top: 45px;
-
 }
 
 .nav-buttons button {
@@ -195,19 +184,15 @@ button:active {
 }
 
 .backBtn {
-
     background: transparent;
     color: #E89AB3;
     border: 2px solid #E89AB3;
     box-shadow: none;
-
 }
 
 .backBtn:hover {
-
     background: rgba(232,154,179,.08);
     box-shadow: none;
-
 }
 
 /* ==========================================================
@@ -215,67 +200,42 @@ button:active {
 ========================================================== */
 
 .music-btn {
-
     position: fixed;
-
     top: 20px;
     right: 20px;
-
     width: 46px;
     height: 46px;
-
     border-radius: 50%;
-
     padding: 0;
     margin: 0;
-
     font-size: 18px;
-
     background: rgba(255,255,255,.85);
-
     color: #E89AB3;
-
     backdrop-filter: blur(10px);
-
     box-shadow: 0 8px 20px rgba(0,0,0,.06);
-
     z-index: 1000;
-
 }
 
 /* ==========================================================
    TOP LEFT BACK BUTTON
 ========================================================== */
 
-.page-back{
-
-    position:fixed;
-
-    top:20px;
-    left:20px;
-
-    width:46px;
-    height:46px;
-
-    border-radius:50%;
-
-    margin:0;
-    padding:0;
-
-    font-size:24px;
-
-    background:rgba(255,255,255,.85);
-
-    color:#E89AB3;
-
-    backdrop-filter:blur(10px);
-
-    box-shadow:0 8px 20px rgba(0,0,0,.06);
-
-    z-index:1000;
-
-    display:none;
-
+.page-back {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    background: rgba(255,255,255,.85);
+    color: #E89AB3;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 20px rgba(0,0,0,.06);
+    z-index: 1000;
+    display: none;
 }
 
 /* ==========================================================
@@ -283,39 +243,25 @@ button:active {
 ========================================================== */
 
 .progress {
-
     position: fixed;
-
     top: 24px;
     left: 50%;
-
     transform: translateX(-50%);
-
     display: flex;
-
     gap: 8px;
-
     z-index: 1000;
-
 }
 
 .progress span {
-
     width: 8px;
     height: 8px;
-
     border-radius: 50%;
-
     background: #F3D7E1;
-
     transition: background .3s ease;
-
 }
 
 .progress .active {
-
     background: #E89AB3;
-
 }
 
 /* ==========================================================
@@ -323,74 +269,49 @@ button:active {
 ========================================================== */
 
 img {
-
     user-select: none;
     -webkit-user-drag: none;
-
 }
 
 .photo {
-
     width: 100%;
-
     display: block;
-
     margin: 28px 0;
-
     border-radius: 20px;
-
     object-fit: cover;
-
     aspect-ratio: 16/9;
-
     box-shadow: 0 8px 20px rgba(0,0,0,.06);
-
     opacity: 0;
-
     transform: translateY(20px);
-
     transition:
         opacity .8s ease,
         transform .8s ease;
-
 }
 
 .photo:hover {
-
     transform: scale(1.02);
-
 }
 
 .reveal.active .photo {
-
     opacity: 1;
-
     transform: translateY(0);
-
 }
 
 /* ==========================================================
    REVEAL ANIMATION (fades in like a page being read)
 ========================================================== */
 
-.reveal > *{
-
-    opacity:0;
-
-    transform:translateY(35px);
-
+.reveal > * {
+    opacity: 0;
+    transform: translateY(35px);
     transition:
         opacity .8s ease,
         transform .8s ease;
-
 }
 
-.reveal.active > *{
-
-    opacity:1;
-
-    transform:translateY(0);
-
+.reveal.active > * {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* ==========================================================
@@ -398,21 +319,14 @@ img {
 ========================================================== */
 
 .date {
-
     font-size: 14px;
-
     color: #B4B4B4;
-
 }
 
 .story {
-
     text-align: left;
-
     color: #555;
-
     line-height: 2;
-
 }
 
 /* ==========================================================
@@ -420,27 +334,19 @@ img {
 ========================================================== */
 
 .memory {
-
     margin-top: 45px;
-
 }
 
 .memory:first-child {
-
     margin-top: 20px;
-
 }
 
 .memory .photo {
-
     margin-bottom: 18px;
-
 }
 
 .memory .story {
-
     margin-bottom: 20px;
-
 }
 
 /* ==========================================================
@@ -448,41 +354,25 @@ img {
 ========================================================== */
 
 .note {
-
     text-align: left;
-
     background: white;
-
     padding: 22px;
-
     border-radius: 20px;
-
     margin-top: 20px;
-
     box-shadow: 0 8px 20px rgba(0,0,0,.05);
-
 }
 
 .note span {
-
     display: block;
-
     color: #E89AB3;
-
     font-size: 20px;
-
     margin-bottom: 10px;
-
 }
 
 .note p {
-
     font-size: 16px;
-
     line-height: 1.8;
-
     color: #555;
-
 }
 
 /* ==========================================================
@@ -490,41 +380,39 @@ img {
 ========================================================== */
 
 .letter h2 {
-
     margin-bottom: 35px;
-
 }
 
+ #letter
+ .letter-body {
+ background-image:
+ linear-gradient(rgba(255,255,255,.3),
+ rgba(255,255,255,.3)), url("images/letter-bg.jpg");
+ background-size: cover;
+ ; background-position: center;
+ border-radius: 20px;
+ aspect-ratio: 736 / 1110;
+ padding: 45px 32px;
+ box-shadow: 0 12px 30px rgba(0,0,0,.15); }
+
 .letter-body {
-
     text-align: left;
-
 }
 
 .greeting {
-
     color: #2F2F2F;
-
     margin-bottom: 20px;
-
 }
 
 .letter-body p {
-
     margin-bottom: 22px;
-
 }
 
 .signature {
-
     margin-top: 45px;
-
     text-align: right;
-
     font-weight: 500;
-
     color: #2F2F2F;
-
 }
 
 /* ==========================================================
@@ -532,17 +420,11 @@ img {
 ========================================================== */
 
 .last-message {
-
     margin-top: 40px;
-
     text-align: center;
-
     font-size: 22px;
-
     line-height: 2;
-
     color: #555;
-
 }
 
 /* ==========================================================
@@ -550,130 +432,92 @@ img {
 ========================================================== */
 
 .proposal-text {
-
     font-size: 28px;
-
     line-height: 1.6;
-
     color: #2F2F2F;
-
     margin: 35px 0;
-
 }
 
 /* ==========================================================
    FLOATING LILIES
 ========================================================== */
 
-.petals{
-
-    position:fixed;
-
-    inset:0;
-
-    pointer-events:none;
-
-    overflow:hidden;
-
-    z-index:1;
-
+.petals {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
 }
 
-.petal{
-
-    position:absolute;
-
-    top:-60px;
-
-    font-size:24px;
-
-    opacity:.55;
-
-    animation:fall linear forwards;
-
+.petal {
+    position: absolute;
+    top: -60px;
+    font-size: 24px;
+    opacity: .55;
+    animation: fall linear forwards;
 }
 
-@keyframes fall{
-
-    from{
-
-        transform:
-            translateY(-60px)
-            rotate(0deg);
-
+@keyframes fall {
+    from {
+        transform: translateY(-60px) rotate(0deg);
     }
-
-    to{
-
-        transform:
-            translateY(110vh)
-            rotate(360deg);
-
+    to {
+        transform: translateY(110vh) rotate(360deg);
     }
-
 }
 
-button{
-    pointer-events:auto !important;
-    position:relative;
-    z-index:9999 !important;
+button {
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 9999 !important;
 }
 
 /* ==========================================================
    PROPOSAL CINEMATIC
 ========================================================== */
 
-#proposal h2{
+#proposal {
+    align-items: center;
+    justify-content: center;
+    padding: 40px 28px;
+}
 
-    opacity:0;
-    transform:translateY(40px);
-
+#proposal h2 {
+    opacity: 0;
+    transform: translateY(40px);
     transition:
         opacity 2.5s ease,
         transform 2.5s ease;
-
 }
 
-#proposal .reveal.active h2{
-
-    opacity:1;
-    transform:translateY(0);
-
+#proposal .reveal.active h2 {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* typed question */
 
-#typedQuestion{
-
-    display:inline-block;
-
-    min-height:55px;
-
+#typedQuestion {
+    display: inline-block;
+    min-height: 55px;
 }
 
 /* buttons hidden */
 
-.proposal-buttons{
-
-    display:flex;
-    justify-content:center;
-    gap:18px;
-
-    margin-top:45px;
-
-    opacity:0;
-
-    transform:translateY(25px);
-
+.proposal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 45px;
+    opacity: 0;
+    transform: translateY(25px);
     transition:
         opacity 1.5s ease,
         transform 1.5s ease;
-
 }
 
-.proposal-buttons.show{
-
-    opacity:1;
-    transform:translateY(0);
-
+.proposal-buttons.show {
+    opacity: 1;
+    transform: translateY(0);
 }
